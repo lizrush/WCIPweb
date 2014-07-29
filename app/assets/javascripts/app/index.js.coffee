@@ -12,13 +12,12 @@
 #= require_tree ./views
 
 class App extends Spine.Controller
+  @extend(Spine.Events)
+
   constructor: ->
     super
-    
-    # Initialize controllers:
-    #  @append(@items = new App.Items)
-    #  ...
-    
-    Spine.Route.setup()    
+    window.app = @
+    new App.Router()
+    new App.ResourceLoader().loadApp(App.Bootstrap.run)
 
 window.App = App

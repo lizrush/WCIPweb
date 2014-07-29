@@ -1,0 +1,8 @@
+%section#app.application-wrapper
+
+= content_for :javascript do
+  :javascript
+    jQuery(function(){
+      $('body').addClass('js-app');
+      new App({el: $('#app') || null});
+    });

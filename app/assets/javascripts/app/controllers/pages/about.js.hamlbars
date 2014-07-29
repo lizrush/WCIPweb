@@ -1,0 +1,8 @@
+.about-page
+  .center-column.about-header
+    %h1 About WCIP
+
+  .center-column
+    .about-body
+      %h2.secondary-headline {{subheader}}
+      {{{body}}}

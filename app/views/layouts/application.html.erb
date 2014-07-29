@@ -1,14 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>WcipWeb</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+!!!
+%html{ class: controller_classes, style: 'background-color: black' }
+  %head
+    :css
+      html, body {
+        background: black;
+      }
 
-<%= yield %>
+    -# Sets viewport to always be equal to device width. Removed options for pinch and zoom
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"}/
+    -# Character encoding for Unicode
+    %meta{:charset => "utf-8"}
+    -# Tells IE to run the latest version of its browser, not a legacy mode. Also run Chrome Frame if installed
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
 
-</body>
-</html>
+    %title WhereCanIPark.in | WCIP.in
+
+    = stylesheet_link_tag    "application", media: "all"
+    = yield :stylesheets
+
+    = csrf_meta_tags
+
+  %body.screened{ontouchstart: ''}
+    = render partial: 'shared/error_message_modal'
+
+    .screen.background
+      %noscript You must enable Javascript to use this site.
+
+      .canvas-wrapper.mobile-slide-nav
+        .content-container
+          = render partial: 'shared/header'
+
+          .flash-message-alert{ 'aria-live' => "assertive", 'role' => 'alert', 'data-initial-message' => flash[:notice] }
+
+          = render partial: 'shared/footer'
+
+    = yield :javascript
+      :javascript
+        App.LayoutBootstrap.run();

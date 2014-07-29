@@ -1,0 +1,19 @@
+.about-page
+  .center-column.about-header
+    %h1 About Distiller
+
+  {{{buildPartial 'about/_about_nav' this '{"currentTab":"tab-about"}' }}}
+
+  .center-column
+    .about-body
+      %h2.secondary-headline {{subheader}}
+      {{{body}}}
+
+  .press-quote-container{'data-behavior' => 'carousel', 'data-carousel-title' => 'press quotes', 'data-single-item' => 'true', 'data-autoplay' => 'true', 'data-pagination' => 'true'}
+    .center-column
+      %ul.press-quotes{'data-behavior' => 'carousel-slides'}
+        = hb 'each pressQuotes' do
+          %li.press-quote
+            %a{:href => '{{link_url}}', :target => '_blank', :title => "Link opens in new window"}
+              %p.quote.tertiary-headline {{body}}
+              .logo{'role' => 'img', 'aria-label' => '{{source}} logo', :style => 'background-image: url({{logo_url}})'}

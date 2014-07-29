@@ -3,7 +3,14 @@ WcipWeb::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#index'
+
+  get '/404', :to => 'errors#not_found', :as => :not_found
+  get '/styleguide', :to => 'pages#styleguide'
+  get '/sitemap', :to => 'pages#sitemap'
+  get '/privacy_policy', :to => 'pages#privacy_policy'
+  get '/how-it-works', :to => 'pages#howitworks'
+  get '/about', :to => 'pages#about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
