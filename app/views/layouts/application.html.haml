@@ -21,8 +21,8 @@
     = csrf_meta_tags
 
   %body.screened{ontouchstart: ''}
+    = render partial: 'shared/skip_links'
     = render partial: 'shared/error_message_modal'
-
     .screen.background
       %noscript You must enable Javascript to use this site.
 
@@ -32,8 +32,16 @@
 
           .flash-message-alert{ 'aria-live' => "assertive", 'role' => 'alert', 'data-initial-message' => flash[:notice] }
 
+          - if single_page_app?
+            .loader-container
+          %main.main-container#main-content{'tabIndex'=>'-1'}
+            .scroller
+              = yield
+
           = render partial: 'shared/footer'
 
     = yield :javascript
+
+    -unless single_page_app?
       :javascript
         App.LayoutBootstrap.run();

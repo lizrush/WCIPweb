@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.3'
-gem 'pg'
+gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -14,6 +14,9 @@ gem 'eco'
 gem 'hamlbars'
 gem 'handlebars_assets'
 gem 'font-awesome-rails'
+gem 'underscore-rails'
+gem 'rails-observers'
+
 
 
 group :development, :test do
@@ -23,11 +26,8 @@ group :development, :test do
   gem 'jasminerice', :git => 'https://github.com/bradphelan/jasminerice.git'
   gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'headless'
-  gem 'mailcatcher'
   gem 'factory_girl'
   gem 'quiet_assets'
-  gem 'database_cleaner'
-  gem 'timecop'
   gem 'better_errors'
 end
 
